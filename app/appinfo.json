@@ -1,10 +1,10 @@
 {
   "id": "com.xiptv.devmodekeeper",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "vendor": "XIPTV Independent",
   "type": "web",
   "main": "index.html",
-  "title": "DevMode Keeper v1.0.5 B006",
+  "title": "DevMode Keeper v1.0.6 B007",
   "requiredMemory": 10,
   "icon": "icon.png",
   "requiredACG": []
