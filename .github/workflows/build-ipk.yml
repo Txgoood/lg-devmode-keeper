@@ -1,4 +1,4 @@
-name: Build webOS IPK - v1.0.6 Build 7
+name: Build webOS IPK - v1.0.7 Build 8
 on:
   push:
     branches: [main]
@@ -32,6 +32,6 @@ jobs:
       - name: Upload installable IPK
         uses: actions/upload-artifact@v4
         with:
-          name: DevModeKeeper-webOS2-v1.0.6-build7-BETA-IPK
+          name: DevModeKeeper-webOS2-v1.0.7-build8-BETA-IPK
           path: dist/*.ipk
           if-no-files-found: error
