@@ -1,0 +1,37 @@
+name: Build webOS IPK - v1.0.3 Build 4
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test legacy JavaScript
+        run: |
+          node --check service/service.js
+          node --check service/renewal.js
+          node --check app/main.js
+          node tests/smoke.js
+      - name: Install official LG webOS CLI
+        run: npm install --global @webos-tools/cli@3.2.6
+      - name: Configure TV profile
+        run: ares-config --profile tv
+      - name: Package with official ares-package
+        run: |
+          mkdir -p dist
+          ares-package --no-minify app service -o dist
+          test -n "$(find dist -maxdepth 1 -name '*.ipk' -print -quit)"
+          ares-package -i "$(find dist -maxdepth 1 -name '*.ipk' | head -1)"
+      - name: Upload installable IPK
+        uses: actions/upload-artifact@v4
+        with:
+          name: DevModeKeeper-webOS2-v1.0.3-build4-BETA-IPK
+          path: dist/*.ipk
+          if-no-files-found: error

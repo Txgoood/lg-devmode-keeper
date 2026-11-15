@@ -1,0 +1,10 @@
+{
+  "id": "com.xiptv.devmodekeeper.service",
+  "description": "Experimental DevMode renewal",
+  "services": [
+    {
+      "name": "com.xiptv.devmodekeeper.service",
+      "description": "Renewal helper"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+var assert=require('assert');var r=require('../service/renewal');assert.strictEqual(r.token('  abcdefghijklmnop  '),'abcdefghijklmnop');assert.strictEqual(r.seconds({remainingSec:100}),100);assert.strictEqual(r.seconds({}),null);assert.throws(function(){r.token('bad');});console.log('Smoke tests OK');
